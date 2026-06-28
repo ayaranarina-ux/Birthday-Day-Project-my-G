@@ -18,12 +18,10 @@
         .envelope-flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 140px solid transparent; border-right: 140px solid transparent; border-top: 100px solid #d4b89c; transform-origin: top center; transition: transform 0.8s ease-in-out; z-index: 3; }
         .envelope-front { position: absolute; bottom: 0; left: 0; width: 0; height: 0; border-left: 140px solid #e6ccb2; border-right: 140px solid #e6ccb2; border-bottom: 90px solid #dfc4a9; border-radius: 0 0 8px 8px; z-index: 4; }
         
-        /* Surat Awal */
         .letter-content { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 250px; height: 120px; background-color: #fffaf5; padding: 15px; border-radius: 4px; opacity: 0; transition: all 1s ease-in-out; z-index: 2; overflow: hidden; }
         
-        /* Saat Amplop Terbuka (Surat ke Tengah) */
         .envelope-wrapper.open .envelope-flap { transform: rotateX(180deg); z-index: 1; }
-        .envelope-wrapper.open .letter-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 350px; height: auto; max-height: 80vh; opacity: 1; z-index: 50; box-shadow: 0 10px 40px rgba(0,0,0,0.2); overflow-y: auto; }
+        .envelope-wrapper.open .letter-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 350px; height: auto; max-height: 85vh; opacity: 1; z-index: 50; box-shadow: 0 10px 40px rgba(0,0,0,0.2); overflow-y: auto; padding-bottom: 20px; }
 
         /* --- KUE COKELAT --- */
         .cake-container { position: relative; width: 180px; height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; margin-bottom: 20px; }
@@ -37,8 +35,6 @@
         .candle { width: 10px; height: 35px; background: linear-gradient(to right, #cfd8dc, #eceff1); position: absolute; bottom: 76px; z-index: 3; border-radius: 2px; }
         .flame { width: 10px; height: 15px; background-color: #ffb300; border-radius: 50% 50% 20% 20%; position: absolute; bottom: 113px; z-index: 4; animation: flicker 0.6s infinite alternate; }
         @keyframes flicker { 0% { transform: scale(1) rotate(-2deg); } 100% { transform: scale(1.1) rotate(2deg); background-color: #ff6f00; } }
-        .typing::after { content: '|'; animation: blink 0.7s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
@@ -62,14 +58,16 @@
                     <p>Mas, makasih ya sudah lahir, makasih sudah bertemu adek, makasih udah sama adek sejauh ini. Makasih ya sayang, semoga dibalas dengan rezeki yg terus mengalir. Semoga mas dipertemukan dengan takdir terbaik mas, semoga mas bahagia.</p>
                     <p>Selamat merayakan tahun ke-28 sayang, selamat menjelajah dunia lebih jauh sayang, selamat menempuh perjalanan baru cinta, semoga Allah selalu mendampingi jalan mas sampai akhir 🤎</p>
                     <p class="font-semibold pt-2 text-right">I love u Mas Garin🤎</p>
-                    <div class="pt-4 text-center">
-                        <a href="https://youtu.be/fPMB2H450iI?si=zexu9GmdVmF-3xVE" target="_blank" class="inline-block px-4 py-2 bg-[#5c4d3c] text-[#fdf6e2] rounded-full text-xs">🎵 Play Song</a>
+                    
+                    <!-- TOMBOL LAGU & NEXT SEKARANG BERSAMAAN DI DALAM SURAT -->
+                    <div class="pt-4 flex flex-col items-center gap-4">
+                        <a href="https://youtu.be/fPMB2H450iI?si=zexu9GmdVmF-3xVE" target="_blank" class="px-4 py-2 bg-[#5c4d3c] text-[#fdf6e2] rounded-full text-xs">🎵 Play Song</a>
+                        <button onclick="nextPage(3)" class="text-xs tracking-widest uppercase border-b border-[#5c4d3c] opacity-60 hover:opacity-100">Next Page</button>
                     </div>
                 </div>
             </div>
             <div class="envelope-front"></div>
         </div>
-        <button id="next-to-cake" onclick="nextPage(3)" class="hidden mt-10 text-xs tracking-widest uppercase border-b border-[#5c4d3c] opacity-60">Next Page</button>
     </div>
 
     <!-- HALAMAN 3 -->
@@ -90,7 +88,6 @@
         function openEnvelope() {
             document.getElementById('envelope').classList.add('open');
             document.getElementById('envelope-instruction').style.opacity = '0';
-            setTimeout(() => document.getElementById('next-to-cake').classList.remove('hidden'), 1000);
         }
     </script>
 </body>
