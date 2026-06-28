@@ -1,1 +1,179 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Birthday</title><style>body{font-family:Arial;background:linear-gradient(#0b1d51,#000);color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}.card{max-width:650px;background:rgba(255,255,255,.1);padding:30px;border-radius:20px;text-align:center}button{padding:12px 24px;border-radius:30px;border:0}#l{display:none;margin-top:20px}</style></head><body><div class="card"><h1>🎂 Happy Birthday</h1><p>For Someone Special 💙</p><button onclick="l.style.display='block'">💌 Open Your Gift</button><div id="l"><p>Hai.<br><br>Selamat ulang tahun. Semoga semua doa baik menemukan jalannya kepadamu, kesehatan selalu menyertai, dan setiap langkahmu membawa kebahagiaan. Terima kasih sudah menjadi dirimu. Happy Birthday! 🤍</p></div></div></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My G 🤎</title>
+    <!-- Tailwind CSS untuk styling cepat & estetik -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts untuk font yang elegan -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fdf6e2 0%, #f4e3c1 50%, #e6ccb2 100%);
+        }
+        .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        /* Efek fade in lembut */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.2s ease-out;
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Animasi mengetik untuk Easter Egg */
+        .typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 overflow-x-hidden text-[#5c4d3c]">
+
+    <!-- SECTION 1: GREETING & AMPLOP -->
+    <div id="section-gift" class="text-center transition-all duration-1000 max-w-md w-full">
+        <span class="text-3xl">☀️</span>
+        <h2 class="text-sm tracking-[0.2em] uppercase mt-2 opacity-80">Golden Hour</h2>
+        <h1 class="serif-font text-4xl italic my-4 font-semibold">Happy Birthday<br>My G 🤎</h1>
+        
+        <!-- Tombol Open Your Gift -->
+        <button onclick="openGift()" class="mt-8 px-6 py-3 border border-[#5c4d3c] rounded-full text-sm tracking-widest uppercase hover:bg-[#5c4d3c] hover:text-[#fdf6e2] transition-all duration-500 cursor-pointer shadow-sm">
+            [ Open Your Gift ]
+        </button>
+    </div>
+
+    <!-- SECTION 2: SURAT (Mulai tersembunyi) -->
+    <div id="section-letter" class="hidden max-w-md w-full bg-[#fcf8f2]/90 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-[#e6ccb2]/50 text-center my-8">
+        <div class="serif-font text-left text-xl italic leading-relaxed space-y-4 whitespace-pre-line">
+            Selamat bertambah usia sayang ❤ Wish u all the best ❤
+            Selamat menjalani hari-hari berikutnya, semoga bertambahnya usia mas, bertambah jg rezeki mas, sehat selalu, dan bahagia. 
+            Semoga semua harapan mas dikabulkan, 
+            Semoga semua yg mas usahakan berujung indah, 
+            Semoga mas bahagia. 
+
+            Mas, makasih ya sudah lahir, makasih sudah bertemu adek, makasih udah sama adek sejauh ini. Makasih ya sayang, semoga dibalas dengan rezeki yg terus mengalir. 
+            Semoga mas dipertemukan dengan takdir terbaik mas, 
+            Semoga mas bahagia. 
+
+            Selamat merayakan tahun ke-28 sayang, selamat menjelajah dunia lebih jauh sayang, selamat menempuh perjalanan baru cinta, semoga Allah selalu mendampingi jalan mas sampai akhir ❤
+        </div>
+
+        <hr class="border-[#e6ccb2] my-8">
+
+        <!-- TOMBOL LAGU BUNGA ABADI (YOUTUBE) -->
+        <a href="https://youtu.be/fPMB2H450iI?si=zexu9GmdVmF-3xVE" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 bg-[#5c4d3c] text-[#fdf6e2] rounded-full text-sm font-medium shadow-md hover:bg-[#4a3e30] transition-all duration-300">
+            <span>🎵</span> Play "Bunga Abadi"
+        </a>
+
+        <!-- KALIMAT TERAKHIR (Akan muncul setelah scroll) -->
+        <div class="fade-in mt-12 pt-4 border-t border-[#e6ccb2]/30">
+            <h3 class="serif-font text-2xl italic font-semibold">I love u, Mas Garin. 🤎</h3>
+            <p class="text-xs tracking-widest uppercase mt-2 opacity-70">— Adek</p>
+        </div>
+    </div>
+
+    <!-- EASTER EGG: HATI KECIL DI POJOK -->
+    <button onclick="openEasterEgg()" class="fixed bottom-4 right-4 text-xl opacity-40 hover:opacity-100 transition-opacity p-2 cursor-pointer focus:outline-none" title="A secret for you">
+        🤎
+    </button>
+
+    <!-- POPUP EASTER EGG (MODAL) -->
+    <div id="easter-egg-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-md flex items-center justify-center p-6 z-50">
+        <div class="bg-[#fdf6e2] p-8 rounded-2xl max-w-sm w-full text-center shadow-2xl border border-[#e6ccb2] relative">
+            <p id="easter-text" class="serif-font text-xl italic leading-relaxed min-h-[80px] flex items-center justify-center"></p>
+            <button id="close-egg-btn" onclick="closeEasterEgg()" class="hidden mt-6 text-xs tracking-widest uppercase border-b border-[#5c4d3c] pb-0.5 opacity-60 hover:opacity-100 mx-auto">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT UNTUK ALUR LOGIKA -->
+    <script>
+        // 1. Alur Buka Hadiah
+        function openGift() {
+            const giftSection = document.getElementById('section-gift');
+            const letterSection = document.getElementById('section-letter');
+            
+            giftSection.classList.add('opacity-0', '-translate-y-10');
+            
+            setTimeout(() => {
+                giftSection.classList.add('hidden');
+                letterSection.classList.remove('hidden');
+                letterSection.classList.add('animate-fade-in');
+                
+                window.addEventListener('scroll', checkScroll);
+            }, 1000);
+        }
+
+        // 2. Memunculkan teks akhir saat scroll kebawah
+        function checkScroll() {
+            const fadeInElement = document.querySelector('.fade-in');
+            if (fadeInElement) {
+                const elementTop = fadeInElement.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 50) {
+                    fadeInElement.classList.add('show');
+                }
+            }
+        }
+
+        // 3. Logika Easter Egg (Efek Mengetik berurutan)
+        const messages = [
+            "One last thing...",
+            "Thank you for existing.",
+            "I'll always pray for your happiness.",
+            "I love you, Mas Garin. 🤎"
+        ];
+        
+        let msgIndex = 0;
+
+        function openEasterEgg() {
+            document.getElementById('easter-egg-modal').classList.remove('hidden');
+            document.getElementById('easter-text').innerHTML = "";
+            document.getElementById('close-egg-btn').classList.add('hidden');
+            msgIndex = 0;
+            typeNextMessage();
+        }
+
+        function typeNextMessage() {
+            if (msgIndex < messages.length) {
+                let currentStr = messages[msgIndex];
+                let charIndex = 0;
+                let textElement = document.getElementById('easter-text');
+                textElement.innerHTML = "";
+                textElement.classList.add('typing');
+
+                function typeChar() {
+                    if (charIndex < currentStr.length) {
+                        textElement.innerHTML += currentStr.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeChar, 70);
+                    } else {
+                        textElement.classList.remove('typing');
+                        msgIndex++;
+                        setTimeout(typeNextMessage, 2000); 
+                    }
+                }
+                typeChar();
+            } else {
+                document.getElementById('close-egg-btn').classList.remove('hidden');
+            }
+        }
+
+        function closeEasterEgg() {
+            document.getElementById('easter-egg-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
