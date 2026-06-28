@@ -18,8 +18,10 @@
         .envelope-flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 140px solid transparent; border-right: 140px solid transparent; border-top: 100px solid #d4b89c; transform-origin: top center; transition: transform 0.8s ease-in-out; z-index: 3; }
         .envelope-front { position: absolute; bottom: 0; left: 0; width: 0; height: 0; border-left: 140px solid #e6ccb2; border-right: 140px solid #e6ccb2; border-bottom: 90px solid #dfc4a9; border-radius: 0 0 8px 8px; z-index: 4; }
         
+        /* Posisi Awal Surat Di Dalam Amplop */
         .letter-content { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 250px; height: 120px; background-color: #fffaf5; padding: 15px; border-radius: 4px; opacity: 0; transition: all 1s ease-in-out; z-index: 2; overflow: hidden; }
         
+        /* Saat Amplop Terbuka (Surat Muncul di Tengah Layar) */
         .envelope-wrapper.open .envelope-flap { transform: rotateX(180deg); z-index: 1; }
         .envelope-wrapper.open .letter-content { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 350px; height: auto; max-height: 85vh; opacity: 1; z-index: 50; box-shadow: 0 10px 40px rgba(0,0,0,0.2); overflow-y: auto; padding-bottom: 20px; }
 
@@ -35,6 +37,10 @@
         .candle { width: 10px; height: 35px; background: linear-gradient(to right, #cfd8dc, #eceff1); position: absolute; bottom: 76px; z-index: 3; border-radius: 2px; }
         .flame { width: 10px; height: 15px; background-color: #ffb300; border-radius: 50% 50% 20% 20%; position: absolute; bottom: 113px; z-index: 4; animation: flicker 0.6s infinite alternate; }
         @keyframes flicker { 0% { transform: scale(1) rotate(-2deg); } 100% { transform: scale(1.1) rotate(2deg); background-color: #ff6f00; } }
+        
+        /* Animasi Kursor Mengetik */
+        .typing::after { content: '|'; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
@@ -42,7 +48,7 @@
     <!-- HALAMAN 1 -->
     <div id="p1" class="page active">
         <h1 class="serif-font text-5xl italic font-semibold mb-10">Happy Birthday<br>My G 🤎</h1>
-        <button onclick="nextPage(2)" class="px-8 py-3 border border-[#5c4d3c] rounded-full text-sm tracking-widest uppercase hover:bg-[#5c4d3c] hover:text-[#f5ece2] transition-all">Begin</button>
+        <button onclick="nextPage(2)" class="px-8 py-3 border border-[#5c4d3c] rounded-full text-sm tracking-widest uppercase hover:bg-[#5c4d3c] hover:text-[#f5ece2] transition-all cursor-pointer">Begin</button>
     </div>
 
     <!-- HALAMAN 2 -->
@@ -59,10 +65,10 @@
                     <p>Selamat merayakan tahun ke-28 sayang, selamat menjelajah dunia lebih jauh sayang, selamat menempuh perjalanan baru cinta, semoga Allah selalu mendampingi jalan mas sampai akhir 🤎</p>
                     <p class="font-semibold pt-2 text-right">I love u Mas Garin🤎</p>
                     
-                    <!-- TOMBOL LAGU & NEXT SEKARANG BERSAMAAN DI DALAM SURAT -->
+                    <!-- TOMBOL LAGU & NEXT DI BAWAH SURAT -->
                     <div class="pt-4 flex flex-col items-center gap-4">
-                        <a href="https://youtu.be/fPMB2H450iI?si=zexu9GmdVmF-3xVE" target="_blank" class="px-4 py-2 bg-[#5c4d3c] text-[#fdf6e2] rounded-full text-xs">🎵 Play Song</a>
-                        <button onclick="nextPage(3)" class="text-xs tracking-widest uppercase border-b border-[#5c4d3c] opacity-60 hover:opacity-100">Next Page</button>
+                        <a href="https://youtu.be/fPMB2H450iI?si=zexu9GmdVmF-3xVE" target="_blank" class="px-4 py-2 bg-[#5c4d3c] text-[#fdf6e2] rounded-full text-xs shadow-md">🎵 Play Song</a>
+                        <button onclick="nextPage(3)" class="text-xs tracking-widest uppercase border-b border-[#5c4d3c] opacity-60 hover:opacity-100 cursor-pointer">Next Page</button>
                     </div>
                 </div>
             </div>
@@ -77,7 +83,22 @@
             <div class="drip drip-1"></div><div class="drip drip-2"></div><div class="drip drip-3"></div>
             <div class="cake-body"></div><div class="plate"></div>
         </div>
-        <p class="serif-font text-xs tracking-widest uppercase opacity-50 italic">made by adek🤎</p>
+        <p class="serif-font text-xs tracking-widest uppercase opacity-50 italic mb-10">made by adek🤎</p>
+        
+        <!-- TOMBOL EASTER EGG RAHASIA -->
+        <button onclick="openEasterEgg()" class="text-2xl opacity-40 hover:opacity-100 hover:scale-125 transition-all p-3 cursor-pointer focus:outline-none">
+            🤎
+        </button>
+    </div>
+
+    <!-- POPUP MODAL FOR EASTER EGG -->
+    <div id="easter-egg-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-md flex items-center justify-center p-6 z-50">
+        <div class="bg-[#fdf6e2] p-8 rounded-2xl max-w-sm w-full text-center shadow-2xl border border-[#e6ccb2] relative">
+            <p id="easter-text" class="serif-font text-xl italic leading-relaxed min-h-[80px] flex items-center justify-center text-[#5c4d3c]"></p>
+            <button id="close-egg-btn" onclick="closeEasterEgg()" class="hidden mt-6 text-xs tracking-widest uppercase border-b border-[#5c4d3c] pb-0.5 opacity-60 hover:opacity-100 mx-auto cursor-pointer">
+                Close
+            </button>
+        </div>
     </div>
 
     <script>
@@ -85,9 +106,57 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('p' + n).classList.add('active');
         }
+        
         function openEnvelope() {
             document.getElementById('envelope').classList.add('open');
             document.getElementById('envelope-instruction').style.opacity = '0';
+        }
+
+        // Logika Easter Egg Mengetik
+        const messages = [
+            "One last thing...",
+            "Thank you for existing.",
+            "I'll always pray for your happiness.",
+            "I love you, Mas Garin. 🤎"
+        ];
+        
+        let msgIndex = 0;
+
+        function openEasterEgg() {
+            document.getElementById('easter-egg-modal').classList.remove('hidden');
+            document.getElementById('easter-text').innerHTML = "";
+            document.getElementById('close-egg-btn').classList.add('hidden');
+            msgIndex = 0;
+            typeNextMessage();
+        }
+
+        function typeNextMessage() {
+            if (msgIndex < messages.length) {
+                let currentStr = messages[msgIndex];
+                let charIndex = 0;
+                let textElement = document.getElementById('easter-text');
+                textElement.innerHTML = "";
+                textElement.classList.add('typing');
+
+                function typeChar() {
+                    if (charIndex < currentStr.length) {
+                        textElement.innerHTML += currentStr.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeChar, 70);
+                    } else {
+                        textElement.classList.remove('typing');
+                        msgIndex++;
+                        setTimeout(typeNextMessage, 2000); 
+                    }
+                }
+                typeChar();
+            } else {
+                document.getElementById('close-egg-btn').classList.remove('hidden');
+            }
+        }
+
+        function closeEasterEgg() {
+            document.getElementById('easter-egg-modal').classList.add('hidden');
         }
     </script>
 </body>
